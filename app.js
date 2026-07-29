@@ -7,8 +7,54 @@ const vendors=[
 ];
 
 const $=selector=>document.querySelector(selector);
+const STORAGE_KEY='mkn_kurashi_ad_state_v1';
+const FREE_SEARCHES=3;
+const AD_INTERVAL=3;
+const DAILY_AD_LIMIT=3;
 let pendingAction=null;
 let deferredPrompt=null;
+
+function todayKey(){
+  const d=new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function defaultAdState(){
+  return {totalSearches:0,adDate:todayKey(),adsToday:0};
+}
+
+function loadAdState(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(STORAGE_KEY));
+    const state={...defaultAdState(),...saved};
+    if(state.adDate!==todayKey()){
+      state.adDate=todayKey();
+      state.adsToday=0;
+    }
+    return state;
+  }catch{
+    return defaultAdState();
+  }
+}
+
+function saveAdState(state){
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch{}
+}
+
+function registerSearchAndShouldShowAd(hasResults){
+  const state=loadAdState();
+  state.totalSearches+=1;
+
+  const searchNumber=state.totalSearches;
+  const reachedAdStage=searchNumber>FREE_SEARCHES;
+  const scheduledAd=reachedAdStage&&((searchNumber-(FREE_SEARCHES+1))%AD_INTERVAL===0);
+  const withinDailyLimit=state.adsToday<DAILY_AD_LIMIT;
+  const shouldShow=hasResults&&scheduledAd&&withinDailyLimit;
+
+  if(shouldShow)state.adsToday+=1;
+  saveAdState(state);
+  return {shouldShow,searchNumber,adsToday:state.adsToday};
+}
 
 function vendorCard(v){
   const subject=encodeURIComponent(`${v.name}への相談`);
@@ -20,49 +66,67 @@ function renderAll(){
   $('#vendorCards').innerHTML=vendors.map(vendorCard).join('');
 }
 
-function showSponsor(action){
+function getSearchResults(){
+  const area=$('#searchArea').value;
+  const service=$('#searchService').value;
+  const keyword=$('#searchKeyword').value.trim().toLowerCase();
+  return vendors.filter(v=>{
+    const text=`${v.name} ${v.area} ${v.service} ${v.meta} ${v.tags.join(' ')}`.toLowerCase();
+    return (area==='all'||v.area===area)&&(service==='all'||v.service===service)&&(!keyword||text.includes(keyword));
+  });
+}
+
+function showSponsor(action,searchNumber){
   pendingAction=action;
+  const label=$('#sponsorOverlay .sponsor-label');
+  if(label)label.textContent=`スポンサー広告・検索${searchNumber}回目`;
   $('#sponsorOverlay').hidden=false;
+  document.body.style.overflow='hidden';
 }
 
 function continueSearch(){
   $('#sponsorOverlay').hidden=true;
+  document.body.style.overflow='';
   const action=pendingAction;
   pendingAction=null;
-  if(action) action();
+  if(action)action();
 }
 
-function runSearch(){
-  const area=$('#searchArea').value;
-  const service=$('#searchService').value;
-  const keyword=$('#searchKeyword').value.trim().toLowerCase();
-  const results=vendors.filter(v=>{
-    const text=`${v.name} ${v.area} ${v.service} ${v.meta} ${v.tags.join(' ')}`.toLowerCase();
-    return (area==='all'||v.area===area)&&(service==='all'||v.service===service)&&(!keyword||text.includes(keyword));
-  });
+function displayResults(results){
   $('#resultCount').textContent=results.length?`${results.length}件の事業者が見つかりました`:'条件に合う事業者はまだ掲載されていません';
   $('#resultCards').innerHTML=results.map(vendorCard).join('');
   $('#searchResults').hidden=false;
   $('#searchResults').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-function startSearch(){showSponsor(runSearch)}
+function startSearch(){
+  const results=getSearchResults();
+  const adDecision=registerSearchAndShouldShowAd(results.length>0);
+  const action=()=>displayResults(results);
+  if(adDecision.shouldShow)showSponsor(action,adDecision.searchNumber);
+  else action();
+}
 
 function setQuickSearch(word){
   $('#searchService').value=[...$('#searchService').options].some(o=>o.value===word)?word:'all';
   $('#searchKeyword').value=word==='all'?'':word.replace('清掃','');
   $('#search').scrollIntoView({behavior:'smooth'});
-  showSponsor(runSearch);
+  window.setTimeout(startSearch,250);
 }
 
 $('#searchButton').addEventListener('click',startSearch);
 $('#searchKeyword').addEventListener('keydown',e=>{if(e.key==='Enter')startSearch()});
 $('#continueSearch').addEventListener('click',continueSearch);
 $('#clearSearch').addEventListener('click',()=>{
-  $('#searchArea').value='all';$('#searchService').value='all';$('#searchKeyword').value='';$('#searchResults').hidden=true;
+  $('#searchArea').value='all';
+  $('#searchService').value='all';
+  $('#searchKeyword').value='';
+  $('#searchResults').hidden=true;
 });
+
 document.querySelectorAll('[data-quick]').forEach(button=>button.addEventListener('click',()=>setQuickSearch(button.dataset.quick)));
 document.querySelectorAll('[data-category]').forEach(button=>button.addEventListener('click',()=>setQuickSearch(button.dataset.category)));
+
 document.addEventListener('click',e=>{
   const button=e.target.closest('[data-detail]');
   if(!button)return;
@@ -71,15 +135,23 @@ document.addEventListener('click',e=>{
 });
 
 window.addEventListener('beforeinstallprompt',e=>{
-  e.preventDefault();deferredPrompt=e;$('#installButton').hidden=false;
+  e.preventDefault();
+  deferredPrompt=e;
+  $('#installButton').hidden=false;
 });
+
 $('#installButton').addEventListener('click',async()=>{
   if(!deferredPrompt)return;
   deferredPrompt.prompt();
   await deferredPrompt.userChoice;
-  deferredPrompt=null;$('#installButton').hidden=true;
+  deferredPrompt=null;
+  $('#installButton').hidden=true;
 });
+
 window.addEventListener('appinstalled',()=>{$('#installButton').hidden=true});
 
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+
 renderAll();
