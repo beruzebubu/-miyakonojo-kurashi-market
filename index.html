@@ -113,9 +113,17 @@
     <div class="sponsor-card">
       <span class="sponsor-label">3秒スポンサー</span>
       <h2 id="sponsorTitle">SHIFT TETRIS</h2>
-      <p>無料検索を支えるレトロ系ミニゲーム。遊ばずに検索結果を見ることもできます。</p>
-      <div class="sponsor-actions"><a href="https://beruzebubu.github.io/shift-tetris/" target="_blank" rel="noopener">ゲームで遊ぶ</a><button id="continueSearch" type="button">検索結果を見る</button></div>
+      <p>無料検索を支えるレトロ系ミニゲームです。サイトを離れず、そのまま遊べます。</p>
+      <div class="sponsor-actions"><button id="playSponsorGame" type="button">ゲームを開く</button><button id="continueSearch" type="button">検索結果を見る</button></div>
       <small>スポンサー企業が決まった場合は、この枠に企業広告を表示します。</small>
+    </div>
+  </div>
+
+  <div id="gameOverlay" class="game-overlay" role="dialog" aria-modal="true" aria-label="SHIFT TETRIS" hidden>
+    <div class="game-modal">
+      <div class="game-modal-head"><div><span>SPONSOR GAME</span><strong>SHIFT TETRIS</strong></div><button id="closeSponsorGame" type="button" aria-label="ゲームを閉じる">×</button></div>
+      <iframe id="shiftTetrisFrame" title="SHIFT TETRIS" loading="lazy" allow="fullscreen"></iframe>
+      <button id="gameToResults" class="button primary game-result-button" type="button">ゲームを閉じて検索結果を見る</button>
     </div>
   </div>
 
