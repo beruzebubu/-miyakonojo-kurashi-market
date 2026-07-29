@@ -11,6 +11,7 @@ const STORAGE_KEY='mkn_kurashi_ad_state_v1';
 const FREE_SEARCHES=3;
 const AD_INTERVAL=3;
 const DAILY_AD_LIMIT=3;
+const GAME_URL='https://beruzebubu.github.io/shift-tetris/';
 let pendingAction=null;
 let deferredPrompt=null;
 
@@ -19,41 +20,26 @@ function todayKey(){
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
-function defaultAdState(){
-  return {totalSearches:0,adDate:todayKey(),adsToday:0};
-}
-
+function defaultAdState(){return {totalSearches:0,adDate:todayKey(),adsToday:0}}
 function loadAdState(){
   try{
     const saved=JSON.parse(localStorage.getItem(STORAGE_KEY));
     const state={...defaultAdState(),...saved};
-    if(state.adDate!==todayKey()){
-      state.adDate=todayKey();
-      state.adsToday=0;
-    }
+    if(state.adDate!==todayKey()){state.adDate=todayKey();state.adsToday=0}
     return state;
-  }catch{
-    return defaultAdState();
-  }
+  }catch{return defaultAdState()}
 }
-
-function saveAdState(state){
-  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch{}
-}
-
+function saveAdState(state){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch{}}
 function registerSearchAndShouldShowAd(hasResults){
   const state=loadAdState();
   state.totalSearches+=1;
-
   const searchNumber=state.totalSearches;
   const reachedAdStage=searchNumber>FREE_SEARCHES;
   const scheduledAd=reachedAdStage&&((searchNumber-(FREE_SEARCHES+1))%AD_INTERVAL===0);
-  const withinDailyLimit=state.adsToday<DAILY_AD_LIMIT;
-  const shouldShow=hasResults&&scheduledAd&&withinDailyLimit;
-
+  const shouldShow=hasResults&&scheduledAd&&state.adsToday<DAILY_AD_LIMIT;
   if(shouldShow)state.adsToday+=1;
   saveAdState(state);
-  return {shouldShow,searchNumber,adsToday:state.adsToday};
+  return {shouldShow,searchNumber};
 }
 
 function vendorCard(v){
@@ -61,10 +47,7 @@ function vendorCard(v){
   const body=encodeURIComponent(`相談したいサービス：${v.service}\n氏名：\n電話番号：\n相談内容：`);
   return `<article class="vendor-card"><div class="vendor-visual">${v.emoji}</div><div class="vendor-body"><div class="vendor-top"><span class="verified">運営確認済み</span><span class="rating">★★★★★ ${v.rating}</span></div><h3>${v.name}</h3><p class="vendor-meta">${v.area}／${v.meta}</p><div class="tags">${v.tags.map(tag=>`<span class="tag">${tag}</span>`).join('')}</div><div class="price-box"><small>${v.service}</small><strong>${v.price}</strong></div><div class="vendor-actions"><a href="mailto:${v.email}?subject=${subject}&body=${body}">相談する</a><button type="button" data-detail="${v.name}">詳しく見る</button></div></div></article>`;
 }
-
-function renderAll(){
-  $('#vendorCards').innerHTML=vendors.map(vendorCard).join('');
-}
+function renderAll(){$('#vendorCards').innerHTML=vendors.map(vendorCard).join('')}
 
 function getSearchResults(){
   const area=$('#searchArea').value;
@@ -76,20 +59,39 @@ function getSearchResults(){
   });
 }
 
+function lockPage(locked){document.body.classList.toggle('modal-open',locked)}
 function showSponsor(action,searchNumber){
   pendingAction=action;
   const label=$('#sponsorOverlay .sponsor-label');
-  if(label)label.textContent=`スポンサー広告・検索${searchNumber}回目`;
+  if(label)label.textContent=`3秒スポンサー・検索${searchNumber}回目`;
   $('#sponsorOverlay').hidden=false;
-  document.body.style.overflow='hidden';
+  lockPage(true);
 }
-
-function continueSearch(){
+function closeSponsor(){
   $('#sponsorOverlay').hidden=true;
-  document.body.style.overflow='';
+  lockPage(false);
+}
+function continueSearch(){
+  closeSponsor();
   const action=pendingAction;
   pendingAction=null;
   if(action)action();
+}
+function openSponsorGame(){
+  $('#sponsorOverlay').hidden=true;
+  const frame=$('#shiftTetrisFrame');
+  if(!frame.src)frame.src=GAME_URL;
+  $('#gameOverlay').hidden=false;
+  lockPage(true);
+}
+function closeSponsorGame(showResults){
+  $('#gameOverlay').hidden=true;
+  lockPage(false);
+  if(showResults){
+    const action=pendingAction;
+    pendingAction=null;
+    if(action)action();
+  }
 }
 
 function displayResults(results){
@@ -98,15 +100,12 @@ function displayResults(results){
   $('#searchResults').hidden=false;
   $('#searchResults').scrollIntoView({behavior:'smooth',block:'start'});
 }
-
 function startSearch(){
   const results=getSearchResults();
   const adDecision=registerSearchAndShouldShowAd(results.length>0);
   const action=()=>displayResults(results);
-  if(adDecision.shouldShow)showSponsor(action,adDecision.searchNumber);
-  else action();
+  if(adDecision.shouldShow)showSponsor(action,adDecision.searchNumber);else action();
 }
-
 function setQuickSearch(word){
   $('#searchService').value=[...$('#searchService').options].some(o=>o.value===word)?word:'all';
   $('#searchKeyword').value=word==='all'?'':word.replace('清掃','');
@@ -117,41 +116,26 @@ function setQuickSearch(word){
 $('#searchButton').addEventListener('click',startSearch);
 $('#searchKeyword').addEventListener('keydown',e=>{if(e.key==='Enter')startSearch()});
 $('#continueSearch').addEventListener('click',continueSearch);
-$('#clearSearch').addEventListener('click',()=>{
-  $('#searchArea').value='all';
-  $('#searchService').value='all';
-  $('#searchKeyword').value='';
-  $('#searchResults').hidden=true;
-});
-
+$('#playSponsorGame').addEventListener('click',openSponsorGame);
+$('#closeSponsorGame').addEventListener('click',()=>closeSponsorGame(false));
+$('#gameToResults').addEventListener('click',()=>closeSponsorGame(true));
+$('#clearSearch').addEventListener('click',()=>{$('#searchArea').value='all';$('#searchService').value='all';$('#searchKeyword').value='';$('#searchResults').hidden=true});
 document.querySelectorAll('[data-quick]').forEach(button=>button.addEventListener('click',()=>setQuickSearch(button.dataset.quick)));
 document.querySelectorAll('[data-category]').forEach(button=>button.addEventListener('click',()=>setQuickSearch(button.dataset.category)));
-
 document.addEventListener('click',e=>{
   const button=e.target.closest('[data-detail]');
   if(!button)return;
   const vendor=vendors.find(v=>v.name===button.dataset.detail);
   alert(`${vendor.name}\n\n対応地域：${vendor.area}\nサービス：${vendor.service}\n料金目安：${vendor.price}\n\n正式公開時は、写真・スタッフ紹介・料金詳細・対応できない作業まで掲載します。`);
 });
-
-window.addEventListener('beforeinstallprompt',e=>{
-  e.preventDefault();
-  deferredPrompt=e;
-  $('#installButton').hidden=false;
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape')return;
+  if(!$('#gameOverlay').hidden)closeSponsorGame(false);
+  else if(!$('#sponsorOverlay').hidden)closeSponsor();
 });
 
-$('#installButton').addEventListener('click',async()=>{
-  if(!deferredPrompt)return;
-  deferredPrompt.prompt();
-  await deferredPrompt.userChoice;
-  deferredPrompt=null;
-  $('#installButton').hidden=true;
-});
-
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('#installButton').hidden=false});
+$('#installButton').addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;$('#installButton').hidden=true});
 window.addEventListener('appinstalled',()=>{$('#installButton').hidden=true});
-
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-}
-
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 renderAll();
