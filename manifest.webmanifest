@@ -1,0 +1,18 @@
+{
+  "name": "みやこんじょ暮らしナビ",
+  "short_name": "暮らしナビ",
+  "description": "都城・三股・曽於の地域生活サービス検索",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fffaf1",
+  "theme_color": "#176b57",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
