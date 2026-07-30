@@ -28,7 +28,7 @@
           <span class="area-pill">都城市・三股町・曽於市限定</span>
           <h1>近くの頼れる人を、<br><em>料金まで見て選べる。</em></h1>
           <p>エアコン清掃、草刈り、不用品回収など、暮らしの困りごとを地元の事業者へ相談できます。料金、人柄、対応内容を確認してから選べます。</p>
-          <div class="hero-actions"><a class="button primary" href="#search">サービスを探す</a><a class="button secondary" href="#fortune">今日の占いを見る</a></div>
+          <div class="hero-actions"><a class="button primary" href="#search">サービスを探す</a><a class="button secondary" href="#fortune">今日の指紋占い</a></div>
           <div class="hero-points"><span>✓ 地域限定</span><span>✓ 料金を事前確認</span><span>✓ 運営確認済み</span></div>
         </div>
         <aside class="quick-panel">
@@ -74,13 +74,13 @@
 
     <section class="section fortune-section" id="fortune">
       <div class="shell fortune-layout">
-        <div class="section-heading"><span>DAILY FORTUNE</span><h2>今日の運勢を占う</h2><p>生年月日と占いたいテーマを選ぶと、今日の運勢を表示します。占い結果を見る前にスポンサー広告を1回表示します。</p></div>
-        <div class="fortune-card">
-          <div class="fortune-form">
-            <label><span>生年月日</span><input id="fortuneBirthday" type="date"></label>
-            <label><span>占うテーマ</span><select id="fortuneTheme"><option value="総合運">総合運</option><option value="仕事運">仕事運</option><option value="金運">金運</option><option value="恋愛運">恋愛運</option><option value="健康運">健康運</option></select></label>
-            <button id="fortuneButton" class="button fortune-button" type="button">スポンサーを見て占う</button>
-          </div>
+        <div class="section-heading"><span>FINGERPRINT FORTUNE</span><h2>今日のあなたの指紋占い</h2><p>指紋マークをタップするだけ。スポンサーのあとに、今日のひとこと占いがランダムで表示されます。</p></div>
+        <div class="fortune-card fingerprint-card">
+          <button id="fortuneButton" class="fingerprint-button" type="button" aria-label="指紋をタップして占う">
+            <span class="fingerprint-icon">◎</span>
+            <strong>ここに指を置く</strong>
+            <small>タップすると占いが始まります</small>
+          </button>
           <div id="fortuneResult" class="fortune-result" hidden aria-live="polite"></div>
         </div>
       </div>
@@ -93,9 +93,9 @@
     <section class="section business-section" id="business"><div class="shell business-card"><div><span class="light-label">FOR BUSINESS</span><h2>地元のお客様に、仕事を知ってもらう。</h2><p>事業者ページ、料金表、写真、問い合わせ導線をまとめて掲載します。</p></div><div class="business-actions"><a class="button light" href="mailto:weeds_skillup_0128@yahoo.co.jp?subject=%E6%8E%B2%E8%BC%89%E7%9B%B8%E8%AB%87">掲載を相談する</a><small>文章作成・写真掲載・SNS用素材も相談可能</small></div></div></section>
   </main>
 
-  <footer class="site-footer"><div class="shell footer-inner"><div><strong>みやこんじょ暮らしナビ</strong><p>都城・三股・曽於の地域生活サービス</p></div><nav><a href="#search">サービスを探す</a><a href="#fortune">今日の占い</a><a href="#trusted">掲載基準</a><a href="mailto:weeds_skillup_0128@yahoo.co.jp">お問い合わせ</a></nav><small>© 2026 みやこんじょ暮らしナビ</small></div></footer>
+  <footer class="site-footer"><div class="shell footer-inner"><div><strong>みやこんじょ暮らしナビ</strong><p>都城・三股・曽於の地域生活サービス</p></div><nav><a href="#search">サービスを探す</a><a href="#fortune">指紋占い</a><a href="#trusted">掲載基準</a><a href="mailto:weeds_skillup_0128@yahoo.co.jp">お問い合わせ</a></nav><small>© 2026 みやこんじょ暮らしナビ</small></div></footer>
 
-  <nav class="mobile-nav"><a href="#top"><span>⌂</span>ホーム</a><a href="#search"><span>⌕</span>探す</a><a href="#fortune"><span>✦</span>占い</a><a href="#business"><span>＋</span>掲載</a></nav>
+  <nav class="mobile-nav"><a href="#top"><span>⌂</span>ホーム</a><a href="#search"><span>⌕</span>探す</a><a href="#fortune"><span>◎</span>占い</a><a href="#business"><span>＋</span>掲載</a></nav>
 
   <div id="sponsorOverlay" class="sponsor-overlay" role="dialog" aria-modal="true" aria-labelledby="sponsorTitle" hidden>
     <div class="sponsor-card">
