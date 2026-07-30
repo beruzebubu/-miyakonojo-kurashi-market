@@ -121,26 +121,72 @@ function setQuickSearch(word){
   window.setTimeout(startSearch,250);
 }
 
-const fortuneMessages=[
-  '今日は、いつもより少しだけ大胆で大丈夫。最初の一歩が流れを変えます。',
-  '急がない方がうまくいく日。ひと呼吸おいてから決めると正解に近づきます。',
-  '小さな親切が、思わぬ形で返ってきそう。周りをよく見てみて。',
-  '今日は直感が冴えています。最初に「これだ」と思った方を選んでみて。',
-  '忘れていたことを一つ片付けると、気持ちまで軽くなります。',
-  '誰かとの何気ない会話にヒントあり。今日は聞き役が吉。',
-  '無理に頑張るより、好きなことを一つ楽しむと運気が上向きます。',
-  '今日は寄り道が当たりの日。予定外の場所や情報に注目してみて。',
-  '迷ったらシンプルな方へ。考えすぎないことが今日の開運ポイント。',
-  'ちょっとした笑顔が流れを変えます。自分から空気を明るくしてみて。'
+const fortuneFlows=[
+  '今日はゆっくり始めるほど、後半の流れが良くなります。',
+  '思いついたことを一つだけ行動に移すと、空気が変わります。',
+  '人との会話から、次に進むきっかけが見つかりそうです。',
+  '予定通りより、少し寄り道した方が面白い発見があります。',
+  '小さな達成感を積み重ねると、気分よく一日を終えられます。',
+  '今日は直感が働く日。最初に気になった方を選んでみて。',
+  '後回しにしていたことへ手をつけると、流れが整います。',
+  '周りを急かさず、自分のペースを守るとうまく進みます。',
+  'いつもの選択を少し変えると、良い刺激が入りそうです。',
+  '今日は人に頼ることが、結果的に一番の近道になります。',
+  '朝より夕方に運気が上向きます。焦らず構えて大丈夫。',
+  '身近な場所に小さなチャンスがあります。遠くを探しすぎないで。'
 ];
-const luckyColors=['ミントグリーン','白','空色','ベージュ','オレンジ','紫','ネイビー'];
-const luckyItems=['ハンカチ','温かい飲み物','イヤホン','メモ帳','小銭','鍵','いつもの靴'];
+
+const fortuneCautions=[
+  'ただし、勢いだけで返事をするのは少し待って。',
+  '考えすぎると動けなくなるので、結論はシンプルに。',
+  '今日は余計な一言に注意。短く伝える方がうまくいきます。',
+  '疲れを感じたら無理せず休憩を。頑張りすぎは逆効果です。',
+  '予定を詰め込みすぎると気持ちが散らかりそうです。',
+  '値段だけで決めず、納得できるかも一度考えて。',
+  '人の機嫌を気にしすぎず、自分の判断も大切に。',
+  '忘れ物が起きやすい日。出発前に一度確認して。',
+  '急な誘いには即答せず、予定を見てから決めましょう。',
+  'SNSや噂話をそのまま信じず、一度立ち止まって。',
+  '今日は勝ち負けにこだわりすぎない方が気楽です。',
+  '財布のひもが緩みやすいので、衝動買いだけ注意。'
+];
+
+const fortuneActions=[
+  '机の上を1分だけ片付ける',
+  'いつもより少し早く返信する',
+  '温かい飲み物をゆっくり飲む',
+  '普段話さない人へ挨拶する',
+  '靴をきれいにして出かける',
+  '気になっていた場所へ寄ってみる',
+  '写真を1枚撮って残す',
+  '今日やることを3つだけ書く',
+  '財布の中を整理する',
+  '5分だけ外の空気を吸う',
+  '好きな曲を1曲聴く',
+  '鏡を見て笑ってみる',
+  '誰かを一つ褒める',
+  'スマホを10分だけ置く',
+  'いつもと違う道を通る'
+];
+
+const luckyColors=['ミントグリーン','白','空色','ベージュ','オレンジ','紫','ネイビー','黄色','カーキ','グレー','赤','ピンク','水色','茶色','黒'];
+const luckyItems=['ハンカチ','温かい飲み物','イヤホン','メモ帳','小銭','鍵','いつもの靴','腕時計','ボールペン','折りたたみ傘','ガム','タオル','帽子','スマホケース','名刺','エコバッグ','鏡','お菓子','水筒','本'];
 
 function randomItem(list){return list[Math.floor(Math.random()*list.length)]}
+function weightedStars(){
+  const n=Math.random()*100;
+  if(n<10)return 1;
+  if(n<30)return 2;
+  if(n<60)return 3;
+  if(n<90)return 4;
+  return 5;
+}
 function displayFortune(){
-  const stars=2+Math.floor(Math.random()*4);
-  const message=randomItem(fortuneMessages);
-  $('#fortuneResult').innerHTML=`<span class="fortune-result-label">今日のあなた</span><div class="fortune-stars">${'★'.repeat(stars)}${'☆'.repeat(5-stars)}</div><h3>${message}</h3><div class="fortune-lucky"><span>ラッキーカラー：<b>${randomItem(luckyColors)}</b></span><span>ラッキーアイテム：<b>${randomItem(luckyItems)}</b></span></div><button id="retryFortune" class="retry-fortune" type="button">もう一度タップする</button><small>指紋は演出です。占いは娯楽としてお楽しみください。</small>`;
+  const stars=weightedStars();
+  const flow=randomItem(fortuneFlows);
+  const caution=randomItem(fortuneCautions);
+  const action=randomItem(fortuneActions);
+  $('#fortuneResult').innerHTML=`<span class="fortune-result-label">今日のあなた</span><div class="fortune-stars">${'★'.repeat(stars)}${'☆'.repeat(5-stars)}</div><h3>${flow}</h3><p class="fortune-caution">${caution}</p><div class="fortune-action"><small>今日のラッキー行動</small><strong>${action}</strong></div><div class="fortune-lucky"><span>ラッキーカラー：<b>${randomItem(luckyColors)}</b></span><span>ラッキーアイテム：<b>${randomItem(luckyItems)}</b></span></div><button id="retryFortune" class="retry-fortune" type="button">もう一度タップする</button><small>指紋は演出です。占いは娯楽としてお楽しみください。</small>`;
   $('#fortuneResult').hidden=false;
   $('#fortuneResult').scrollIntoView({behavior:'smooth',block:'center'});
   $('#retryFortune').addEventListener('click',startFortune);
