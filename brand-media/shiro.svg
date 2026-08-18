@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 980" role="img" aria-labelledby="title desc">
+<title id="title">専属ナビゲーター 城</title>
+<desc id="desc">都城・三股・曽於の地域サービスを案内する男性キャラクター城。</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#edf5f0"/><stop offset="1" stop-color="#d8e7df"/></linearGradient>
+  <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b6b56"/><stop offset="1" stop-color="#173f34"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#173f34" flood-opacity=".16"/></filter>
+</defs>
+<rect width="720" height="980" rx="48" fill="url(#bg)"/>
+<circle cx="570" cy="165" r="105" fill="#f5dfb8" opacity=".55"/>
+<circle cx="120" cy="790" r="145" fill="#fff" opacity=".45"/>
+<g filter="url(#shadow)">
+  <path d="M160 895c12-190 57-312 200-312s188 122 200 312z" fill="url(#shirt)"/>
+  <rect x="274" y="535" width="172" height="112" rx="54" fill="#f1c9aa"/>
+  <ellipse cx="360" cy="365" rx="176" ry="205" fill="#f4cdb0"/>
+  <path d="M190 365c-8-137 55-235 170-235 119 0 184 83 178 216-43-28-73-70-87-124-44 75-129 118-261 143z" fill="#342b27"/>
+  <path d="M214 338c-22 6-35 28-31 57 4 31 25 51 49 47l-6-99z" fill="#efc4a6"/>
+  <path d="M506 338c22 6 35 28 31 57-4 31-25 51-49 47l6-99z" fill="#efc4a6"/>
+  <ellipse cx="300" cy="382" rx="11" ry="13" fill="#2d2926"/>
+  <ellipse cx="420" cy="382" rx="11" ry="13" fill="#2d2926"/>
+  <path d="M319 480c27 24 57 24 84 0" fill="none" stroke="#a45650" stroke-width="12" stroke-linecap="round"/>
+  <path d="M278 342c24-14 48-17 72-5" fill="none" stroke="#342b27" stroke-width="13" stroke-linecap="round"/>
+  <path d="M390 337c24-12 48-9 72 5" fill="none" stroke="#342b27" stroke-width="13" stroke-linecap="round"/>
+  <path d="M353 400c-6 28-5 53 7 66 12 0 24-3 34-9" fill="none" stroke="#dda78a" stroke-width="8" stroke-linecap="round"/>
+  <path d="M250 655l110 92 110-92" fill="#fff" opacity=".95"/>
+  <path d="M324 746l36 30 36-30 22 149h-116z" fill="#d8b56a"/>
+  <circle cx="360" cy="805" r="64" fill="#fff" opacity=".14"/>
+  <text x="360" y="832" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Yu Gothic',sans-serif" font-size="78" font-weight="900" fill="#fff">城</text>
+</g>
+<g transform="translate(74 76)">
+  <rect width="184" height="54" rx="27" fill="#fff" opacity=".92"/>
+  <text x="92" y="36" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Yu Gothic',sans-serif" font-size="22" font-weight="800" fill="#173f34">NAVIGATOR 城</text>
+</g>
+</svg>
