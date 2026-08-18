@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-18",
+  "jobs": [
+    {
+      "jobId": "J0001",
+      "providerId": "P0001",
+      "title": "美容師スタイリスト",
+      "category": "美容・理容",
+      "area": "都城市",
+      "employmentType": "正社員",
+      "salary": "月給25万円保証／歩合45％",
+      "tags": ["正社員", "年間休日120日"],
+      "url": "https://beauty.hotpepper.jp/slnH000200941/",
+      "status": "active",
+      "updatedAt": "2026-08-18"
+    },
+    {
+      "jobId": "J0002",
+      "providerId": "P0002",
+      "title": "美容師・アイリスト",
+      "category": "美容・理容",
+      "area": "都城市",
+      "employmentType": "正社員",
+      "salary": "勤務条件は相談",
+      "tags": ["正社員", "美容"],
+      "url": "https://sharesalon-hair.com/",
+      "status": "active",
+      "updatedAt": "2026-08-18"
+    },
+    {
+      "jobId": "J0003",
+      "providerId": "P0002",
+      "title": "シェアサロン利用者",
+      "category": "美容・理容",
+      "area": "都城市",
+      "employmentType": "業務委託",
+      "salary": "利用条件は相談",
+      "tags": ["業務委託", "自由な働き方"],
+      "url": "https://sharesalon-hair.com/",
+      "status": "active",
+      "updatedAt": "2026-08-18"
+    },
+    {
+      "jobId": "J0004",
+      "providerId": "P0003",
+      "title": "ホール・調理補助",
+      "category": "飲食・販売・接客",
+      "area": "都城市",
+      "employmentType": "アルバイト・パート",
+      "salary": "給与・勤務条件は確認中",
+      "tags": ["アルバイト・パート", "飲食"],
+      "url": "https://www.instagram.com/saketosyoku_toto/",
+      "status": "active",
+      "updatedAt": "2026-08-18"
+    }
+  ]
+}
