@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<title id="title">都城の暮らしサービス利用シーン</title>
+<desc id="desc">エアコンを整備する男性スタッフと女性スタッフ、仕上がりを喜ぶ高齢夫婦がいる明るい日本の居間。</desc>
+<defs>
+  <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f8f2e7"/><stop offset="1" stop-color="#efe8dc"/></linearGradient>
+  <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fbfdff"/><stop offset="1" stop-color="#dbeff0"/></linearGradient>
+  <linearGradient id="green" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#25745a"/><stop offset="1" stop-color="#114f3d"/></linearGradient>
+  <linearGradient id="navy" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#35596d"/><stop offset="1" stop-color="#203d4f"/></linearGradient>
+  <linearGradient id="beige" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d8b58d"/><stop offset="1" stop-color="#b98458"/></linearGradient>
+  <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f7d0b3"/><stop offset="1" stop-color="#e8ae88"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#31463d" flood-opacity=".16"/></filter>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="16"/></filter>
+</defs>
+<rect width="1600" height="1000" fill="url(#wall)"/>
+<rect x="1090" y="70" width="430" height="490" rx="20" fill="#ded4c5"/>
+<rect x="1120" y="95" width="370" height="440" rx="8" fill="url(#sun)"/>
+<path d="M1120 440 Q1250 350 1340 430 T1490 410 V535 H1120Z" fill="#b8d6bb" opacity=".68"/>
+<path d="M1120 475 Q1230 410 1320 465 T1490 445 V535 H1120Z" fill="#80aa81" opacity=".72"/>
+<path d="M1070 54 H1545 V92 H1070Z" fill="#b88b62" opacity=".48"/>
+<g opacity=".75"><path d="M1068 74v520" stroke="#d8c8b7" stroke-width="30"/><path d="M1540 74v520" stroke="#d8c8b7" stroke-width="30"/></g>
+<rect x="0" y="790" width="1600" height="210" fill="#d9c7ad"/>
+<path d="M0 835 C360 775 720 860 1080 810 S1450 800 1600 850 V1000 H0Z" fill="#cdb898" opacity=".55"/>
+<ellipse cx="1250" cy="745" rx="310" ry="82" fill="#a5b69c" opacity=".22" filter="url(#soft)"/>
+<!-- air conditioner -->
+<g filter="url(#shadow)"><rect x="90" y="105" width="520" height="150" rx="28" fill="#fff"/><rect x="116" y="185" width="468" height="38" rx="9" fill="#e8edeb"/><g stroke="#9aa7a1" stroke-width="5" opacity=".75"><path d="M145 198h390"/><path d="M145 211h390"/></g><circle cx="548" cy="151" r="8" fill="#4c8f76"/></g>
+<!-- ladder -->
+<g stroke="#7f8581" stroke-width="24" stroke-linecap="round"><path d="M300 620L210 988"/><path d="M470 620L540 988"/></g><g stroke="#9ba09d" stroke-width="17"><path d="M284 690h190"/><path d="M262 775h228"/><path d="M240 860h264"/><path d="M220 945h300"/></g>
+<!-- male technician -->
+<g filter="url(#shadow)"><path d="M315 345 C348 314 410 308 449 337 L487 540 L430 710 L302 696 L270 530Z" fill="url(#navy)"/><ellipse cx="380" cy="298" rx="61" ry="72" fill="url(#skin)"/><path d="M323 288 Q332 218 387 218 Q449 220 453 284 Q408 255 353 263Z" fill="#2d3330"/><path d="M322 377 Q250 300 222 250" fill="none" stroke="#2b4d61" stroke-width="42" stroke-linecap="round"/><path d="M431 377 Q505 298 520 246" fill="none" stroke="#2b4d61" stroke-width="42" stroke-linecap="round"/><circle cx="218" cy="246" r="23" fill="#162c38"/><circle cx="522" cy="241" r="23" fill="#162c38"/><path d="M350 306h10M407 306h10" stroke="#323330" stroke-width="8" stroke-linecap="round"/><path d="M365 334 Q383 350 402 332" fill="none" stroke="#a75f53" stroke-width="6" stroke-linecap="round"/><path d="M334 708 L315 862 L372 862 L395 712Z" fill="#233d4d"/><path d="M403 708 L414 862 L472 862 L458 702Z" fill="#233d4d"/><rect x="295" y="540" width="180" height="42" rx="14" fill="#503b2e"/><g fill="#b86f35"><rect x="314" y="548" width="19" height="98" rx="8"/><rect x="344" y="548" width="22" height="82" rx="8"/><rect x="381" y="548" width="24" height="105" rx="8"/></g></g>
+<!-- female assistant -->
+<g filter="url(#shadow)"><path d="M540 590 Q575 520 650 524 Q726 529 756 594 L735 820 H536Z" fill="url(#beige)"/><ellipse cx="646" cy="484" rx="64" ry="74" fill="url(#skin)"/><path d="M585 471 Q586 399 650 397 Q713 398 711 469 Q674 429 616 440Z" fill="#3a302b"/><path d="M603 456 Q571 487 563 535 Q592 527 616 497" fill="#3a302b"/><path d="M611 492h9M669 492h9" stroke="#353331" stroke-width="8" stroke-linecap="round"/><path d="M625 522 Q647 541 671 519" fill="none" stroke="#a75f53" stroke-width="7" stroke-linecap="round"/><path d="M585 650 Q650 692 718 648" fill="none" stroke="#fff" stroke-width="20" opacity=".8"/><rect x="645" y="615" width="160" height="112" rx="14" transform="rotate(-8 645 615)" fill="#f7f3e9" stroke="#5d4b3f" stroke-width="7"/><path d="M662 647h110M662 676h96M662 704h75" stroke="#a49b91" stroke-width="8" stroke-linecap="round"/></g>
+<!-- sofa -->
+<g filter="url(#shadow)"><rect x="860" y="650" width="650" height="250" rx="68" fill="#8fa487"/><rect x="915" y="600" width="275" height="150" rx="46" fill="#9caf94"/><rect x="1210" y="600" width="260" height="150" rx="46" fill="#9caf94"/></g>
+<!-- older man -->
+<g filter="url(#shadow)"><path d="M1110 545 Q1140 492 1205 500 Q1270 503 1304 560 L1295 800 H1074Z" fill="#6d8592"/><ellipse cx="1191" cy="438" rx="70" ry="80" fill="url(#skin)"/><path d="M1123 432 Q1135 354 1196 356 Q1254 361 1264 425 Q1237 392 1192 390 Q1152 391 1123 432Z" fill="#c5c2bb"/><path d="M1145 442h12M1219 442h12" stroke="#353331" stroke-width="8" stroke-linecap="round"/><circle cx="1152" cy="444" r="25" fill="none" stroke="#535d59" stroke-width="5"/><circle cx="1226" cy="444" r="25" fill="none" stroke="#535d59" stroke-width="5"/><path d="M1177 444h24" stroke="#535d59" stroke-width="5"/><path d="M1156 482 Q1191 515 1227 480" fill="none" stroke="#9a554a" stroke-width="9" stroke-linecap="round"/><path d="M1100 638 Q1040 685 1024 724" fill="none" stroke="#667f8c" stroke-width="38" stroke-linecap="round"/><path d="M1025 724 l40 28" stroke="#e8b48c" stroke-width="28" stroke-linecap="round"/></g>
+<!-- older woman -->
+<g filter="url(#shadow)"><path d="M1288 596 Q1326 530 1390 535 Q1457 537 1490 600 L1500 813 H1267Z" fill="#b08da2"/><ellipse cx="1388" cy="480" rx="67" ry="77" fill="url(#skin)"/><path d="M1325 478 Q1328 405 1390 400 Q1455 405 1451 476 Q1418 439 1387 437 Q1353 439 1325 478Z" fill="#d1cec7"/><path d="M1342 489h11M1414 489h11" stroke="#353331" stroke-width="8" stroke-linecap="round"/><path d="M1352 526 Q1387 557 1422 524" fill="none" stroke="#9a554a" stroke-width="9" stroke-linecap="round"/><path d="M1320 650 Q1270 676 1245 710" fill="none" stroke="#aa859a" stroke-width="36" stroke-linecap="round"/><path d="M1458 650 Q1508 680 1520 718" fill="none" stroke="#aa859a" stroke-width="36" stroke-linecap="round"/><path d="M1280 700 Q1360 745 1495 700" fill="#f5eadf" opacity=".72"/></g>
+<!-- table & plant -->
+<ellipse cx="1000" cy="886" rx="250" ry="70" fill="#a37d59" opacity=".32"/>
+<rect x="800" y="850" width="395" height="96" rx="38" fill="#b78b61"/>
+<g transform="translate(918 790)"><ellipse cx="74" cy="85" rx="58" ry="18" fill="#755d45"/><path d="M40 82 Q34 22 72 10 Q80 50 70 83" fill="#598961"/><path d="M72 82 Q86 18 118 26 Q105 65 84 88" fill="#477a53"/><path d="M65 82 Q44 33 26 43 Q30 70 57 89" fill="#6a9b6f"/><rect x="42" y="76" width="72" height="66" rx="20" fill="#e4d0b7"/></g>
+<!-- subtle foreground glow -->
+<rect width="1600" height="1000" fill="url(#wall)" opacity=".06"/>
+</svg>
