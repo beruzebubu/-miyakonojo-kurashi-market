@@ -83,10 +83,77 @@ document.querySelectorAll('.quickLinks [data-category]').forEach(button => butto
   categorySelect.value = button.dataset.category;
   runSearch();
 }));
+const consultForm = document.getElementById('consultForm');
+const formStatus = document.getElementById('formStatus');
+const consultReview = document.getElementById('consultReview');
+const openConsultMail = document.getElementById('openConsultMail');
+
+function consultText() {
+  const data = new FormData(consultForm);
+  return `地域：${data.get('area') || '未選択'}\n困りごと：${data.get('service') || '未選択'}\n希望時期：${data.get('timing') || '未選択'}\n\n内容：\n${data.get('detail') || ''}`;
+}
+
+function consultMailHref() {
+  const subject = `みやこんじょ暮らし・${consultForm.elements.service.value}の相談`;
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(consultText())}`;
+}
+
+function hideReview(message = '') {
+  consultReview.hidden = true;
+  if (message) formStatus.textContent = message;
+}
+
+function showReview() {
+  const fields = [
+    ['reviewArea', 'area'],
+    ['reviewService', 'service'],
+    ['reviewTiming', 'timing'],
+    ['reviewDetail', 'detail']
+  ];
+  fields.forEach(([id, name]) => {
+    document.getElementById(id).textContent = consultForm.elements[name].value;
+  });
+  openConsultMail.href = consultMailHref();
+  consultReview.hidden = false;
+  formStatus.textContent = '入力内容を確認してください。まだ運営には送信されていません。';
+  consultReview.scrollIntoView({behavior: 'smooth', block: 'start'});
+  consultReview.focus({preventScroll: true});
+}
+
 document.querySelectorAll('.consultButton').forEach(button => button.addEventListener('click', () => {
-  const subject = `みやこんじょ暮らし・${button.dataset.service}の相談`;
-  const body = `地域：${areaSelect.value === 'all' ? '未選択' : areaSelect.value}\n困りごとの内容：`;
-  location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const service = button.dataset.service || '';
+  const serviceField = consultForm.elements.service;
+  serviceField.value = [...serviceField.options].some(option => option.value === service) ? service : service.includes('エアコン') ? 'エアコン清掃' : service.includes('草刈り') ? '草刈り・剪定' : service.includes('片付け') ? '不用品・片付け' : 'その他';
+  const selectedArea = areaSelect.value;
+  if (selectedArea !== 'all') consultForm.elements.area.value = selectedArea;
+  hideReview('サービスを相談メモへ引き継ぎました。');
+  document.getElementById('consult').scrollIntoView({behavior: 'smooth'});
 }));
+
+consultForm.addEventListener('input', () => {
+  if (!consultReview.hidden) hideReview('内容が変わりました。もう一度「入力内容を確認する」を押してください。');
+});
+
+consultForm.addEventListener('submit', event => {
+  event.preventDefault();
+  if (!consultForm.reportValidity()) return;
+  showReview();
+});
+
+document.getElementById('editConsult').addEventListener('click', () => {
+  hideReview('入力欄へ戻りました。修正後にもう一度確認してください。');
+  consultForm.elements.area.focus();
+  consultForm.scrollIntoView({behavior: 'smooth', block: 'center'});
+});
+
+document.getElementById('copyConsult').addEventListener('click', async () => {
+  if (!consultForm.reportValidity()) return;
+  try {
+    await navigator.clipboard.writeText(consultText());
+    formStatus.textContent = '相談メモをコピーしました。メールや電話の準備に使えます。';
+  } catch (error) {
+    formStatus.textContent = 'コピーできませんでした。「メールアプリを開く」をご利用ください。';
+  }
+});
 
 loadPublicData();

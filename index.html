@@ -7,6 +7,7 @@
   <meta name="description" content="都城・三股・曽於の暮らしの困りごとを、地元の事業者へ相談できる地域生活サービスサイト。">
   <title>みやこんじょ暮らし｜地元の困りごと相談</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="readability.css">
 </head>
 <body>
   <header class="siteHeader">
@@ -25,6 +26,7 @@
         <p class="areaLabel">都城市・三股町・曽於市</p>
         <h1 id="heroTitle">暮らしの困りごと、<br><em>近くの頼れる人</em>に相談。</h1>
         <p>草刈り、エアコン、水回り、片付け。料金・口コミ・対応地域を見て選べます。</p>
+        <div class="heroActions"><a href="#search">事業者を探す</a><a href="#consult">迷ったら運営に相談</a></div>
       </div>
     </section>
 
@@ -35,111 +37,65 @@
       </div>
       <div class="searchFields">
         <label>地域
-          <select id="areaSelect">
-            <option value="all">すべての地域</option>
-            <option value="都城市">都城市</option>
-            <option value="三股町">三股町</option>
-            <option value="曽於市">曽於市</option>
-          </select>
+          <select id="areaSelect"><option value="all">すべての地域</option><option value="都城市">都城市</option><option value="三股町">三股町</option><option value="曽於市">曽於市</option></select>
         </label>
         <label>サービス
-          <select id="categorySelect">
-            <option value="all">すべてのサービス</option>
-            <option value="エアコン">エアコン清掃</option>
-            <option value="草刈り">草刈り・剪定</option>
-            <option value="片付け">不用品回収・片付け</option>
-            <option value="水回り">水回り修理</option>
-            <option value="清掃">ハウスクリーニング</option>
-          </select>
+          <select id="categorySelect"><option value="all">すべてのサービス</option><option value="エアコン">エアコン清掃</option><option value="草刈り">草刈り・剪定</option><option value="片付け">不用品回収・片付け</option><option value="水回り">水回り修理</option><option value="清掃">ハウスクリーニング</option></select>
         </label>
-        <label>キーワード
-          <input id="keywordInput" type="search" placeholder="例：即日、写真見積もり">
-        </label>
+        <label>キーワード<input id="keywordInput" type="search" placeholder="例：即日、写真見積もり"></label>
       </div>
       <button class="primaryButton" id="searchButton" type="button">この条件で探す</button>
-      <div class="quickLinks" aria-label="よく探されるサービス">
-        <span>よく探される</span>
-        <button type="button" data-category="エアコン">エアコン</button>
-        <button type="button" data-category="草刈り">草刈り</button>
-        <button type="button" data-category="片付け">片付け</button>
-      </div>
+      <div class="quickLinks" aria-label="よく探されるサービス"><span>よく探される</span><button type="button" data-category="エアコン">エアコン</button><button type="button" data-category="草刈り">草刈り</button><button type="button" data-category="片付け">片付け</button></div>
     </section>
 
     <section class="trustStrip" aria-label="安心して使える理由">
-      <div><b>① 地域で探す</b><span>都城・三股・曽於に限定</span></div>
-      <div><b>② 条件を比べる</b><span>料金・口コミ・対応範囲</span></div>
-      <div><b>③ 相談して決める</b><span>内容を確認してから依頼</span></div>
+      <div><b>① 地域で探す</b><span>都城・三股・曽於に限定</span></div><div><b>② 条件を比べる</b><span>料金・口コミ・対応範囲</span></div><div><b>③ 相談して決める</b><span>内容を確認してから依頼</span></div>
     </section>
 
     <section class="contentSection" id="results" aria-labelledby="resultsTitle">
-      <div class="sectionHeading">
-        <div><p>探す → 比べる → 相談する</p><h2 id="resultsTitle">サービスを比べる</h2></div>
-        <strong id="resultCount">掲載準備中</strong>
-      </div>
-
-      <div class="notice" id="dataNotice" role="status">
-        <b>現在、地元事業者の掲載を募集中です。</b>
-        <span>下のカードは比較画面の見本です。実在の事業者・口コミ・実績ではありません。</span>
-      </div>
-
+      <div class="sectionHeading"><div><p>探す → 比べる → 相談する</p><h2 id="resultsTitle">サービスを比べる</h2></div><strong id="resultCount">掲載準備中</strong></div>
+      <div class="notice" id="dataNotice" role="status"><b>現在、地元事業者の掲載を募集中です。</b><span>下のカードは比較画面の見本です。実在の事業者・口コミ・実績ではありません。</span></div>
       <div class="serviceGrid" id="liveResults" aria-live="polite"></div>
-
       <div class="guideGrid" id="guideResults">
-        <article class="guideCard" data-area="都城市 三股町 曽於市" data-category="エアコン 清掃" data-keywords="即日 女性 写真見積もり">
-          <div class="guideVisual aircon"><span>掲載イメージ</span></div>
-          <div class="guideBody">
-            <div class="cardTop"><span>エアコン清掃</span><small>見本</small></div>
-            <h3>料金・口コミ・対応地域を<br>ひと目で比較</h3>
-            <dl><div><dt>料金</dt><dd>登録後に表示</dd></div><div><dt>口コミ</dt><dd>本人確認後に表示</dd></div><div><dt>対応地域</dt><dd>都城・三股・曽於</dd></div></dl>
-            <button class="secondaryButton consultButton" type="button" data-service="エアコン清掃">この困りごとを相談</button>
-          </div>
-        </article>
-        <article class="guideCard" data-area="都城市 三股町 曽於市" data-category="草刈り" data-keywords="庭 剪定 写真見積もり 定期">
-          <div class="guideVisual garden"><span>掲載イメージ</span></div>
-          <div class="guideBody">
-            <div class="cardTop"><span>草刈り・剪定</span><small>見本</small></div>
-            <h3>作業内容と得意分野まで<br>比べて選べる</h3>
-            <dl><div><dt>料金</dt><dd>登録後に表示</dd></div><div><dt>特徴</dt><dd>写真見積もり等</dd></div><div><dt>対応地域</dt><dd>都城・三股・曽於</dd></div></dl>
-            <button class="secondaryButton consultButton" type="button" data-service="草刈り・剪定">この困りごとを相談</button>
-          </div>
-        </article>
-        <article class="guideCard" data-area="都城市 三股町 曽於市" data-category="片付け" data-keywords="不用品 家具 搬出 片付け">
-          <div class="guideVisual cleanup"><span>掲載イメージ</span></div>
-          <div class="guideBody">
-            <div class="cardTop"><span>不用品・片付け</span><small>見本</small></div>
-            <h3>相談前に条件が分かるから<br>頼みやすい</h3>
-            <dl><div><dt>料金</dt><dd>登録後に表示</dd></div><div><dt>内容</dt><dd>搬出範囲を明記</dd></div><div><dt>対応地域</dt><dd>都城・三股・曽於</dd></div></dl>
-            <button class="secondaryButton consultButton" type="button" data-service="不用品・片付け">この困りごとを相談</button>
-          </div>
-        </article>
+        <article class="guideCard" data-area="都城市 三股町 曽於市" data-category="エアコン 清掃" data-keywords="即日 女性 写真見積もり"><div class="guideVisual aircon" role="img" aria-label="日本人スタッフが家庭用エアコンを清掃する掲載イメージ"><span>掲載イメージ</span></div><div class="guideBody"><div class="cardTop"><span>エアコン清掃</span><small>見本</small></div><h3>料金・口コミ・対応地域を<br>ひと目で比較</h3><dl><div><dt>料金</dt><dd>登録後に表示</dd></div><div><dt>口コミ</dt><dd>本人確認後に表示</dd></div><div><dt>対応地域</dt><dd>都城・三股・曽於</dd></div></dl><button class="secondaryButton consultButton" type="button" data-service="エアコン清掃">この困りごとを相談</button></div></article>
+        <article class="guideCard" data-area="都城市 三股町 曽於市" data-category="草刈り" data-keywords="庭 剪定 写真見積もり 定期"><div class="guideVisual garden" role="img" aria-label="日本人作業者が一般家庭の庭木を安全に剪定する掲載イメージ"><span>掲載イメージ</span></div><div class="guideBody"><div class="cardTop"><span>草刈り・剪定</span><small>見本</small></div><h3>作業内容と得意分野まで<br>比べて選べる</h3><dl><div><dt>料金</dt><dd>登録後に表示</dd></div><div><dt>特徴</dt><dd>写真見積もり等</dd></div><div><dt>対応地域</dt><dd>都城・三股・曽於</dd></div></dl><button class="secondaryButton consultButton" type="button" data-service="草刈り・剪定">この困りごとを相談</button></div></article>
+        <article class="guideCard" data-area="都城市 三股町 曽於市" data-category="片付け" data-keywords="不用品 家具 搬出 片付け"><div class="guideVisual cleanup" role="img" aria-label="日本人スタッフが家庭の不用品を安全に搬出する掲載イメージ"><span>掲載イメージ</span></div><div class="guideBody"><div class="cardTop"><span>不用品・片付け</span><small>見本</small></div><h3>相談前に条件が分かるから<br>頼みやすい</h3><dl><div><dt>料金</dt><dd>登録後に表示</dd></div><div><dt>内容</dt><dd>搬出範囲を明記</dd></div><div><dt>対応地域</dt><dd>都城・三股・曽於</dd></div></dl><button class="secondaryButton consultButton" type="button" data-service="不用品・片付け">この困りごとを相談</button></div></article>
       </div>
       <p class="noMatch" id="noMatch" hidden>条件に合う見本がありません。地域やサービスを変えてください。</p>
     </section>
 
-    <section class="guideSection" aria-label="都と城の案内">
-      <div class="guideFaces" aria-hidden="true"><span class="miyako">都</span><span class="jo">城</span></div>
-      <div><p>案内役の「都」と「城」</p><h2>何を選べばいいか迷っても大丈夫。</h2><span>困りごとの内容を聞いて、探し方と比較ポイントをご案内します。</span></div>
-      <a href="mailto:weeds_skillup_0128@yahoo.co.jp?subject=みやこんじょ暮らし・困りごと相談">運営に相談する</a>
+    <section class="consultBuilder" id="consult" aria-labelledby="consultTitle">
+      <div class="consultLead"><p>見つからない・どこへ頼むか迷う方へ</p><h2 id="consultTitle">30秒で、相談内容を整理。</h2><span>実在事業者がまだ掲載されていない困りごとも、先に運営へ相談できます。</span></div>
+      <form class="consultForm" id="consultForm">
+        <div class="consultStep"><b>1</b><span>地域と困りごとを選ぶ</span></div>
+        <div class="formGrid">
+          <label>お住まいの地域<select name="area" required><option value="">選択してください</option><option>都城市</option><option>三股町</option><option>曽於市</option><option>その他</option></select></label>
+          <label>困りごと<select name="service" required><option value="">選択してください</option><option>エアコン清掃</option><option>草刈り・剪定</option><option>不用品・片付け</option><option>水回り修理</option><option>ハウスクリーニング</option><option>その他</option></select></label>
+          <label>いつ頃までに<select name="timing" required><option value="">選択してください</option><option>できるだけ早く</option><option>1週間以内</option><option>1か月以内</option><option>時期は相談したい</option></select></label>
+        </div>
+        <div class="consultStep"><b>2</b><span>分かる範囲だけ書く</span></div>
+        <label>困っている内容<textarea name="detail" rows="4" required placeholder="例：リビングのエアコン1台。においが気になるので、料金を確認してから頼みたい。"></textarea></label>
+        <div class="privacyNote"><b>入力内容はサイトに保存しません。</b><span>まずこの画面で相談内容を確認します。確認後にメールアプリへ引き継ぎ、送信するまでは運営へ届きません。</span></div>
+        <div class="consultActions"><button class="primaryButton" type="submit" aria-controls="consultReview">入力内容を確認する</button></div>
+        <p class="formStatus" id="formStatus" role="status" aria-live="polite"></p>
+        <section class="consultReview" id="consultReview" tabindex="-1" hidden aria-labelledby="reviewTitle">
+          <p class="reviewEyebrow">送信前の確認</p><h3 id="reviewTitle">この内容で相談しますか？</h3>
+          <dl class="reviewSummary"><div><dt>地域</dt><dd id="reviewArea"></dd></div><div><dt>困りごと</dt><dd id="reviewService"></dd></div><div><dt>希望時期</dt><dd id="reviewTiming"></dd></div><div class="reviewDetail"><dt>相談内容</dt><dd id="reviewDetail"></dd></div></dl>
+          <div class="reviewCaution"><b>まだ依頼や契約は確定しません。</b><span>現在は事業者掲載の準備中です。運営が内容を確認しますが、対応先をご案内できない場合があります。</span></div>
+          <div class="reviewActions"><a class="primaryButton" id="openConsultMail" href="#">メールアプリを開く</a><button class="copyButton" id="copyConsult" type="button">相談メモをコピー</button><button class="editButton" id="editConsult" type="button">入力を修正する</button></div>
+          <small class="sendNote">ボタンを押しただけでは送信されません。メール内容を確認してから送信してください。</small>
+        </section>
+        <a class="directMail" href="mailto:weeds_skillup_0128@yahoo.co.jp?subject=みやこんじょ暮らし・困りごと相談">入力せずメールで相談する</a>
+      </form>
     </section>
 
-    <section class="businessSection" id="business">
-      <p class="eyebrow">FOR LOCAL BUSINESS</p>
-      <h2>地域から仕事の相談を<br>受けませんか？</h2>
-      <p>サービス内容・料金・対応地域を掲載し、都城・三股・曽於のお客様とつながれます。求人募集も必要な事業者には、別サービス「みやこんじょ求人」をご案内します。</p>
-      <div class="businessActions">
-        <a class="lightButton" href="mailto:weeds_skillup_0128@yahoo.co.jp?subject=みやこんじょ暮らし・事業者掲載相談">掲載・登録を相談する</a>
-        <a class="textLink" href="https://beruzebubu.github.io/-miyakonjo-kurashi-media2/">採用も考えている方はこちら</a>
-      </div>
-    </section>
+    <section class="guideSection" aria-label="都と城の案内"><div class="guideFaces" aria-hidden="true"><span class="miyako">都</span><span class="jo">城</span></div><div><p>案内役の「都」と「城」</p><h2>何を選べばいいか迷っても大丈夫。</h2><span>困りごとの内容を聞いて、探し方と比較ポイントをご案内します。</span></div><a href="#consult">都と城と相談メモを作る</a></section>
+
+    <section class="businessSection" id="business"><p class="eyebrow">FOR LOCAL BUSINESS</p><h2>地域から仕事の相談を<br>受けませんか？</h2><p>サービス内容・料金・対応地域を掲載し、都城・三股・曽於のお客様とつながれます。求人募集も必要な事業者には、別サービス「みやこんじょ求人」をご案内します。</p><div class="businessActions"><a class="lightButton" href="mailto:weeds_skillup_0128@yahoo.co.jp?subject=みやこんじょ暮らし・事業者掲載相談">掲載・登録を相談する</a><a class="textLink" href="https://beruzebubu.github.io/-miyakonjo-kurashi-media2/">採用も考えている方はこちら</a></div></section>
   </main>
 
   <footer>みやこんじょ暮らし｜都城・三股・曽於の地域生活サービス</footer>
-  <nav class="bottomNav" aria-label="主要メニュー">
-    <a href="#top"><b>⌂</b><span>ホーム</span></a>
-    <a href="#search"><b>⌕</b><span>探す</span></a>
-    <a href="#results"><b>≡</b><span>比べる</span></a>
-    <a href="#business"><b>＋</b><span>掲載する</span></a>
-  </nav>
+  <nav class="bottomNav" aria-label="主要メニュー"><a href="#top"><b>⌂</b><span>ホーム</span></a><a href="#search"><b>⌕</b><span>探す</span></a><a href="#consult"><b>?</b><span>相談</span></a><a href="#business"><b>＋</b><span>掲載する</span></a></nav>
   <script src="app.js" defer></script>
 </body>
 </html>
