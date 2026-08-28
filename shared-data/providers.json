@@ -31,56 +31,6 @@
       "serviceEnabled": false,
       "publicUrl": "https://www.instagram.com/saketosyoku_toto/",
       "status": "active"
-    },
-    {
-      "providerId": "P0101",
-      "name": "みやこのお掃除サービス",
-      "area": "都城市",
-      "categories": ["エアコン清掃", "ハウスクリーニング"],
-      "jobEnabled": false,
-      "serviceEnabled": true,
-      "publicUrl": "",
-      "status": "demo"
-    },
-    {
-      "providerId": "P0102",
-      "name": "みまた庭しごと",
-      "area": "三股町",
-      "categories": ["草刈り・剪定"],
-      "jobEnabled": false,
-      "serviceEnabled": true,
-      "publicUrl": "",
-      "status": "demo"
-    },
-    {
-      "providerId": "P0103",
-      "name": "そお片付けサポート",
-      "area": "曽於市",
-      "categories": ["不用品回収・片付け"],
-      "jobEnabled": false,
-      "serviceEnabled": true,
-      "publicUrl": "",
-      "status": "demo"
-    },
-    {
-      "providerId": "P0104",
-      "name": "みやこんじょ住まい清掃",
-      "area": "都城市",
-      "categories": ["ハウスクリーニング"],
-      "jobEnabled": false,
-      "serviceEnabled": true,
-      "publicUrl": "",
-      "status": "demo"
-    },
-    {
-      "providerId": "P0105",
-      "name": "南九州水まわり相談室",
-      "area": "都城市",
-      "categories": ["水回り修理"],
-      "jobEnabled": false,
-      "serviceEnabled": true,
-      "publicUrl": "",
-      "status": "demo"
     }
   ]
 }
