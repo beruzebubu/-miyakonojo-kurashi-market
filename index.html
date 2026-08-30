@@ -55,6 +55,7 @@
     <section class="contentSection" id="results" aria-labelledby="resultsTitle">
       <div class="sectionHeading"><div><p>探す → 比べる → 相談する</p><h2 id="resultsTitle">サービスを比べる</h2></div><strong id="resultCount">掲載準備中</strong></div>
       <div class="notice" id="dataNotice" role="status"><b>現在、地元事業者の掲載を募集中です。</b><span>下のカードは比較画面の見本です。実在の事業者・口コミ・実績ではありません。</span></div>
+      <div class="emptyAction" id="emptyAction"><div><strong>掲載準備中の今も、相談内容を整理できます。</strong><span>地域と困りごとを30秒で整理。対応先をご案内できない場合があります。</span></div><a href="#consult">先に相談内容をまとめる</a></div>
       <div class="serviceGrid" id="liveResults" aria-live="polite"></div>
       <div class="guideGrid" id="guideResults">
         <article class="guideCard" data-area="都城市 三股町 曽於市" data-category="エアコン 清掃" data-keywords="即日 女性 写真見積もり"><div class="guideVisual aircon" role="img" aria-label="日本人スタッフが家庭用エアコンを清掃する掲載イメージ"><span>掲載イメージ</span></div><div class="guideBody"><div class="cardTop"><span>エアコン清掃</span><small>見本</small></div><h3>料金・口コミ・対応地域を<br>ひと目で比較</h3><dl><div><dt>料金</dt><dd>登録後に表示</dd></div><div><dt>口コミ</dt><dd>本人確認後に表示</dd></div><div><dt>対応地域</dt><dd>都城・三股・曽於</dd></div></dl><button class="secondaryButton consultButton" type="button" data-service="エアコン清掃">この困りごとを相談</button></div></article>
@@ -73,8 +74,8 @@
           <label>困りごと<select name="service" required><option value="">選択してください</option><option>エアコン清掃</option><option>草刈り・剪定</option><option>不用品・片付け</option><option>水回り修理</option><option>ハウスクリーニング</option><option>その他</option></select></label>
           <label>いつ頃までに<select name="timing" required><option value="">選択してください</option><option>できるだけ早く</option><option>1週間以内</option><option>1か月以内</option><option>時期は相談したい</option></select></label>
         </div>
-        <div class="consultStep"><b>2</b><span>分かる範囲だけ書く</span></div>
-        <label>困っている内容<textarea name="detail" rows="4" required placeholder="例：リビングのエアコン1台。においが気になるので、料金を確認してから頼みたい。"></textarea></label>
+        <div class="consultStep"><b>2</b><span>分かる範囲だけ書く（任意）</span></div>
+        <label>困っている内容（任意）<textarea name="detail" rows="4" placeholder="例：リビングのエアコン1台。においが気になるので、料金を確認してから頼みたい。"></textarea></label>
         <div class="privacyNote"><b>入力内容はサイトに保存しません。</b><span>まずこの画面で相談内容を確認します。確認後にメールアプリへ引き継ぎ、送信するまでは運営へ届きません。</span></div>
         <div class="consultActions"><button class="primaryButton" type="submit" aria-controls="consultReview">入力内容を確認する</button></div>
         <p class="formStatus" id="formStatus" role="status" aria-live="polite"></p>

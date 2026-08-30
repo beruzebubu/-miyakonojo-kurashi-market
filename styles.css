@@ -13,7 +13,7 @@
 .consultActions{grid-template-columns:1fr}.consultReview{margin-top:15px;padding:22px;border:2px solid #124f3c;border-radius:16px;background:#fbfdfb;scroll-margin-top:18px}.consultReview[hidden]{display:none}.consultReview:focus{outline:4px solid #d7bd86;outline-offset:3px}.reviewEyebrow{margin:0 0 4px;color:#6f5835;font-size:12px;font-weight:900}.consultReview h3{margin:0 0 15px;color:#123f32;font-size:25px;line-height:1.35}.reviewSummary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:0}.reviewSummary div{padding:11px;border-radius:10px;background:#eef5f1}.reviewSummary .reviewDetail{grid-column:1/-1}.reviewSummary dt{color:#607168;font-size:11px;font-weight:800}.reviewSummary dd{margin:4px 0 0;color:#173b30;font-size:15px;font-weight:900;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}.reviewCaution{display:grid;gap:3px;margin-top:11px;padding:12px;border-radius:11px;background:#f7f0e3;color:#51462f;font-size:12px;line-height:1.65}.reviewCaution b{font-size:13px}.reviewActions{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:7px;margin-top:13px}.reviewActions .primaryButton{display:flex;align-items:center;justify-content:center;margin:0;text-decoration:none}.editButton{min-height:52px;border:2px solid #8ba297;border-radius:12px;background:#fff;color:#315f50;font-size:15px;font-weight:900}.sendNote{display:block;margin-top:9px;color:#5d6c64;font-size:11px;font-weight:700;line-height:1.6}.consultReview button:focus-visible,.consultReview a:focus-visible{outline:4px solid #d7bd86;outline-offset:2px}
 @media(max-width:700px){.consultReview{padding:18px 13px}.consultReview h3{font-size:23px}.reviewSummary{grid-template-columns:1fr}.reviewSummary .reviewDetail{grid-column:auto}.reviewSummary dd{font-size:16px}.reviewActions{grid-template-columns:1fr}.reviewActions .primaryButton,.reviewActions button{min-height:55px;font-size:16px}}
 
-/* 2026-08-24 preview: an honest, instantly recognizable aircon-cleaning photo. */
+/* 2026-08-24 production: an honest, instantly recognizable aircon-cleaning photo. */
 .guideVisual.aircon{height:190px;background:#dfe8e3 url("assets/aircon-cleaning-example-v1.webp") center 37%/cover no-repeat}
 .guideVisual.aircon:before{content:none}
 .guideVisual.aircon:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,46,35,.05),rgba(11,46,35,.14));pointer-events:none}
@@ -22,16 +22,22 @@
 @media(max-width:720px){.guideVisual.aircon{height:210px;background-position:center 35%}}
 
 
-/* 2026-08-25 preview: honest, recognizable household-item removal photo. */
+/* 2026-08-25 production: honest, recognizable household-item removal photo. */
 .guideVisual.cleanup{height:190px;background:#e6e0d6 url("assets/junk-removal-example-v1.webp") center 44%/cover no-repeat}
 .guideVisual.cleanup:before{content:none}
 .guideVisual.cleanup:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,46,35,.03),rgba(11,46,35,.14));pointer-events:none}
 .guideVisual.cleanup span{z-index:1;padding:7px 11px;background:rgba(255,255,255,.94);box-shadow:0 2px 10px rgba(16,50,39,.16);font-size:16px}
 @media(max-width:720px){.guideVisual.cleanup{height:210px;background-position:center 42%}}
 
-/* 2026-08-26 preview: a natural, trustworthy garden-pruning photo. */
+/* 2026-08-26 production: a natural, trustworthy garden-pruning photo. */
 .guideVisual.garden{height:190px;background:#dfe9d9 url("assets/garden-pruning-example-v1.webp") center 43%/cover no-repeat}
 .guideVisual.garden:before{content:none}
 .guideVisual.garden:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,46,35,.03),rgba(11,46,35,.14));pointer-events:none}
 .guideVisual.garden span{z-index:1;padding:7px 11px;background:rgba(255,255,255,.94);box-shadow:0 2px 10px rgba(16,50,39,.16);font-size:16px}
 @media(max-width:720px){.guideVisual.garden{height:210px;background-position:center 41%}}
+
+/* 2026-08-28 production: direct consultation path when no providers are published. */
+.emptyAction{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 20px;padding:18px 20px;border:2px solid #b8d1c5;border-radius:18px;background:#edf6f1;color:#173b30}
+.emptyAction div{display:grid;gap:3px}.emptyAction strong{font-size:20px;line-height:1.45}.emptyAction span{font-size:16px;line-height:1.7;font-weight:700}
+.emptyAction a{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:54px;padding:12px 18px;border-radius:12px;background:#124f3c;color:#fff;font-size:18px;font-weight:950;text-align:center}
+@media(max-width:720px){.emptyAction{display:grid;gap:13px;margin-bottom:16px;padding:17px}.emptyAction strong{font-size:20px}.emptyAction span{font-size:16px}.emptyAction a{width:100%;min-height:56px;font-size:18px}}

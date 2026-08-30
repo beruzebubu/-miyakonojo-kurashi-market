@@ -6,6 +6,7 @@ const keywordInput = document.getElementById('keywordInput');
 const guideCards = [...document.querySelectorAll('.guideCard')];
 const liveResults = document.getElementById('liveResults');
 const dataNotice = document.getElementById('dataNotice');
+const emptyAction = document.getElementById('emptyAction');
 const resultCount = document.getElementById('resultCount');
 const noMatch = document.getElementById('noMatch');
 let liveCards = [];
@@ -51,6 +52,7 @@ async function loadPublicData() {
     liveResults.innerHTML = services.map(s => serviceCard(s, providerMap.get(s.providerId || s.provider_id))).join('');
     liveCards = [...liveResults.querySelectorAll('.guideCard')];
     document.getElementById('guideResults').hidden = true;
+    emptyAction.hidden = true;
     dataNotice.innerHTML = '<b>本人確認・公開設定済みの事業者だけを表示しています。</b><span>料金・対応地域・サービス内容を確認してご相談ください。</span>';
     resultCount.textContent = services.length + '件掲載中';
   } catch (error) {
@@ -88,9 +90,31 @@ const formStatus = document.getElementById('formStatus');
 const consultReview = document.getElementById('consultReview');
 const openConsultMail = document.getElementById('openConsultMail');
 
+emptyAction.addEventListener('click', () => {
+  const transferred = [];
+  const selectedArea = areaSelect.value;
+  if (selectedArea !== 'all') {
+    consultForm.elements.area.value = selectedArea;
+    transferred.push('地域');
+  }
+  const serviceMap = {
+    'エアコン': 'エアコン清掃',
+    '草刈り': '草刈り・剪定',
+    '片付け': '不用品・片付け',
+    '水回り': '水回り修理',
+    '清掃': 'ハウスクリーニング'
+  };
+  const selectedService = serviceMap[categorySelect.value];
+  if (selectedService) {
+    consultForm.elements.service.value = selectedService;
+    transferred.push('困りごと');
+  }
+  hideReview(transferred.length ? transferred.join('と') + 'を相談メモへ引き継ぎました。' : '相談内容を選んでください。');
+});
+
 function consultText() {
   const data = new FormData(consultForm);
-  return `地域：${data.get('area') || '未選択'}\n困りごと：${data.get('service') || '未選択'}\n希望時期：${data.get('timing') || '未選択'}\n\n内容：\n${data.get('detail') || ''}`;
+  return `地域：${data.get('area') || '未選択'}\n困りごと：${data.get('service') || '未選択'}\n希望時期：${data.get('timing') || '未選択'}\n\n内容：\n${String(data.get('detail') || '').trim() || '未入力（相談時に確認）'}`;
 }
 
 function consultMailHref() {
@@ -111,7 +135,8 @@ function showReview() {
     ['reviewDetail', 'detail']
   ];
   fields.forEach(([id, name]) => {
-    document.getElementById(id).textContent = consultForm.elements[name].value;
+    const value = consultForm.elements[name].value.trim();
+    document.getElementById(id).textContent = value || (name === 'detail' ? '未入力（相談時に確認）' : '未選択');
   });
   openConsultMail.href = consultMailHref();
   consultReview.hidden = false;
