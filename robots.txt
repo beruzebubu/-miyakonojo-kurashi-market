@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /ui-candidates/
+
+Sitemap: https://beruzebubu.github.io/-miyakonojo-kurashi-market/sitemap.xml
