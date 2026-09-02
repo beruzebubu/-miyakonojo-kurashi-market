@@ -227,3 +227,48 @@
   .bottomNav{display:none}
   footer{padding-bottom:28px}
 }
+
+/* 2026-09-02 production: separate white surfaces after field feedback. */
+main{background:#f8faf9}
+.heroOverlay{
+  background:linear-gradient(90deg,rgba(247,250,248,.94) 0%,rgba(247,250,248,.86) 58%,rgba(247,250,248,.50) 100%)
+}
+.searchPanel{
+  background:rgba(242,247,244,.98);
+  border:2px solid #aec8bc;
+  box-shadow:0 20px 58px rgba(18,79,60,.20)
+}
+.searchFields select,.searchFields input{
+  border-color:#aac2b6;
+  background:#fff
+}
+.contentSection{
+  background:#eef4f1;
+  border-top:1px solid #d6e4dd;
+  border-bottom:1px solid #d6e4dd
+}
+.guideCard,.serviceCard{
+  border-color:#c2d5cb;
+  box-shadow:0 12px 32px rgba(18,79,60,.11)
+}
+@media(max-width:720px){
+  .contentSection{margin-top:28px;padding:40px 14px 25px}
+}
+@media(min-width:721px){
+  .heroOverlay{
+    background:linear-gradient(90deg,rgba(247,250,248,.94) 0%,rgba(247,250,248,.78) 42%,rgba(247,250,248,.36) 68%,rgba(247,250,248,.14) 100%)
+  }
+  .contentSection{
+    margin-top:38px;
+    padding:52px 32px 34px;
+    border:1px solid #d6e4dd;
+    border-radius:28px
+  }
+}
+@media (orientation:landscape) and (min-width:568px) and (max-height:620px){
+  .heroOverlay{
+    background:linear-gradient(90deg,rgba(247,250,248,.94) 0%,rgba(247,250,248,.78) 45%,rgba(247,250,248,.30) 78%,rgba(247,250,248,.12) 100%)
+  }
+  .contentSection{border:1px solid #d6e4dd;border-radius:24px}
+}
+
