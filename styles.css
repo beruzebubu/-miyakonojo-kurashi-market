@@ -272,3 +272,112 @@ main{background:#f8faf9}
   .contentSection{border:1px solid #d6e4dd;border-radius:24px}
 }
 
+/* 2026-09-02 production: high-contrast text and clearer sections for older readers. */
+:root{
+  --ink:#101311;
+  --muted:#2d3531;
+  --line:#aebfb6
+}
+body{color:#101311}
+main{background:#f3f6f4}
+.searchPanel{
+  background:#e4eee9;
+  border-color:#789789;
+  box-shadow:0 22px 56px rgba(18,79,60,.24)
+}
+.searchFields select,.searchFields input{
+  color:#101311;
+  border-color:#789789
+}
+.searchFields select::placeholder,.searchFields input::placeholder{color:#343b37}
+.contentSection{
+  background:#e3ede8;
+  border-color:#afc4ba
+}
+.trustStrip div{
+  background:#f5f8f6;
+  border:2px solid #b6c9bf
+}
+.guideCard,.serviceCard{
+  background:#fff;
+  border:2px solid #9eb6aa;
+  box-shadow:0 14px 34px rgba(18,79,60,.15)
+}
+.brand small,
+.headerLink,
+.areaLabel,
+.hero h1 em,
+.searchHeading p,
+.sectionHeading p,
+.searchFields label,
+.quickLinks span,
+.quickLinks button,
+.trustStrip b,
+.trustStrip span,
+.sectionHeading strong,
+.notice,
+.guideVisual span,
+.cardTop span,
+.cardTop small,
+.guideBody dt,
+.secondaryButton,
+.guideSection p,
+.guideSection div>span,
+.guideSection>a,
+footer,
+.bottomNav a,
+.previewBar,
+.previewBar a,
+.heroActions a+a,
+.consultBuilder,
+.consultLead p,
+.consultForm label,
+.consultForm select,
+.consultForm textarea,
+.privacyNote b,
+.copyButton,
+.formStatus,
+.directMail,
+.reviewEyebrow,
+.consultReview h3,
+.reviewSummary dt,
+.reviewSummary dd,
+.reviewCaution,
+.editButton,
+.sendNote,
+.emptyAction{
+  color:#101311
+}
+.quickLinks button,
+.secondaryButton,
+.guideSection>a,
+.heroActions a+a,
+.copyButton,
+.editButton{
+  background:#fff
+}
+.notice{color:#19140e}
+.guideVisual span,.cardTop small{color:#17130d}
+.primaryButton,
+.heroActions a:first-child,
+.emptyAction a,
+.businessSection,
+.businessSection h2,
+.businessSection .eyebrow,
+.businessSection>p:not(.eyebrow),
+.businessSection .lightButton,
+.businessSection .textLink,
+.consultStep b,
+.guideFaces span,
+.brandMark{
+  color:#fff
+}
+.businessSection .lightButton{
+  color:#101311;
+  border:2px solid #fff
+}
+@media(max-width:720px){
+  .searchPanel{border-width:2px}
+  .contentSection{border-top-width:2px;border-bottom-width:2px}
+}
+
